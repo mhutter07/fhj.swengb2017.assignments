@@ -9,12 +9,16 @@ object FunctionalAssignment {
   /**
     * A function which returns its parameters in a changed order. Look at the type signature.
     */
-  def flip[A, B](t: (A, B)): (B, A) = ???
+  def flip[A, B](t: (A, B)): (B, A) = {
+    (t._2,t._1)
+  }
 
   /**
     * given a Seq[A] and a function f : A => B, return a Seq[B]
     */
-  def unknown[A, B](as: Seq[A], fn: A => B): Seq[B] = ???
+  def unknown[A, B](as: Seq[A], fn: A => B): Seq[B] = {
+    as.map(fn)
+  }
 
   /**
     * Returns the absolute value of the parameter i.
@@ -22,7 +26,14 @@ object FunctionalAssignment {
     * @param i a value, either with a positive or a negative sign.
     * @return
     */
-  def abs(i: Int): Int = ???
+  def abs(i: Int): Int = {
+    if (i > 0) {
+      i
+    }
+    else {
+      i * (-1)
+    }
+  }
 
 
   // Describe with your own words what this function does.
@@ -50,7 +61,9 @@ object FunctionalAssignment {
     * @param numbers
     * @return
     */
-  def sum(numbers: Seq[Int]): Int = ???
+  def sum(numbers: Seq[Int]): Int = {
+    op(numbers, 0)(_+_)
+  }
 
 
   /**
@@ -63,7 +76,14 @@ object FunctionalAssignment {
     * @param i parameter for which the factorial must be calculated
     * @return i!
     */
-  def fact(i: Int): Int = ???
+  def fact(i: Int): Int = {
+    if (i > 0) {
+      i * fact(i-1)
+    }
+    else {
+      1
+    }
+  }
 
   /**
     * compute the n'th fibonacci number
@@ -73,7 +93,13 @@ object FunctionalAssignment {
     *
     * https://en.wikipedia.org/wiki/Fibonacci_number
     */
-  def fib(n: Int): Int = ???
+  def fib(n: Int): Int = {
+    def fibRec(n: Int, a: Int, b: Int) : Int = {n match {
+      case 0 => b
+      case _ => fibRec(n-1, a+b, a)
+    }}
+    fibRec(n, 1, 0)
+  }
 
   /**
     * Implement a isSorted which checks whether an Array[A] is sorted according to a
