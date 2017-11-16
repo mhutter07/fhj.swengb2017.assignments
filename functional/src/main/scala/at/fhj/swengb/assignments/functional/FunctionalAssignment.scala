@@ -17,7 +17,8 @@ object FunctionalAssignment {
     * given a Seq[A] and a function f : A => B, return a Seq[B]
     */
   def unknown[A, B](as: Seq[A], fn: A => B): Seq[B] = {
-    as.map(fn)
+    for {x <- as}
+      yield fn(x)
   }
 
   /**
@@ -27,12 +28,8 @@ object FunctionalAssignment {
     * @return
     */
   def abs(i: Int): Int = {
-    if (i > 0) {
-      i
-    }
-    else {
-      i * (-1)
-    }
+    if (i > 0) i
+    else i * (-1)
   }
 
 
@@ -77,12 +74,9 @@ object FunctionalAssignment {
     * @return i!
     */
   def fact(i: Int): Int = {
-    if (i > 0) {
+    if (i > 0)
       i * fact(i-1)
-    }
-    else {
-      1
-    }
+    else 1
   }
 
   /**
@@ -96,7 +90,7 @@ object FunctionalAssignment {
   def fib(n: Int): Int = {
     def fibRec(n: Int, a: Int, b: Int) : Int = {n match {
       case 0 => b
-      case _ => fibRec(n-1, a+b, a)
+      case _ => fibRec(n - 1, a + b, a)
     }}
     fibRec(n, 1, 0)
   }
@@ -108,7 +102,13 @@ object FunctionalAssignment {
     * Implementation hint: you always have to compare two consecutive elements of the array.
     * Elements which are equal are considered to be ordered.
     */
-  def isSorted[A](as: Array[A], gt: (A, A) => Boolean): Boolean = ???
+  def isSorted[A](as: Array[A], gt: (A, A) => Boolean): Boolean = {
+    def sortRec(n: Int): Boolean =
+      if (n <= as.length - 1) true
+      else if (gt(as(n), as(n + 1))) false
+      else sortRec(n + 1)
+    sortRec(0)
+  }
 
   /**
     * Takes both lists and combines them, element per element.
@@ -116,7 +116,9 @@ object FunctionalAssignment {
     * If one sequence is shorter than the other one, the function stops at the last element
     * of the shorter sequence.
     */
-  def genPairs[A, B](as: Seq[A], bs: Seq[B]): Seq[(A, B)] = ???
+  def genPairs[A, B](as: Seq[A], bs: Seq[B]): Seq[(A, B)] = {
+    for (a <- as ; b <- bs if as.indexOf(a) == bs.indexOf(b)) yield (a,b)
+  }
 
   // a simple definition of a linked list, we define our own list data structure
   sealed trait MyList[+A]
