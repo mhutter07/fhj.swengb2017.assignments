@@ -131,7 +131,10 @@ object FunctionalAssignment {
   // it also provides a convenience constructor in order to instantiate a MyList without hassle
   object MyList {
 
-    def sum[Int](list: MyList[Int]): Int = ???
+    def sum[Int](list: MyList[Int]): Int = list match {
+      case MyNil => 0
+      case Cons(h,t) => h + sum(t)
+    }
 
     def product[Int](list: MyList[Int]): Int = ???
 
