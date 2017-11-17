@@ -9,17 +9,12 @@ object FunctionalAssignment {
   /**
     * A function which returns its parameters in a changed order. Look at the type signature.
     */
-  def flip[A, B](t: (A, B)): (B, A) = {
-    (t._2,t._1)
-  }
+  def flip[A, B](t: (A, B)): (B, A) = ???
 
   /**
     * given a Seq[A] and a function f : A => B, return a Seq[B]
     */
-  def unknown[A, B](as: Seq[A], fn: A => B): Seq[B] = {
-    for {x <- as}
-      yield fn(x)
-  }
+  def unknown[A, B](as: Seq[A], fn: A => B): Seq[B] = ???
 
   /**
     * Returns the absolute value of the parameter i.
@@ -27,10 +22,7 @@ object FunctionalAssignment {
     * @param i a value, either with a positive or a negative sign.
     * @return
     */
-  def abs(i: Int): Int = {
-    if (i > 0) i
-    else i * (-1)
-  }
+  def abs(i: Int): Int = ???
 
 
   // Describe with your own words what this function does.
@@ -58,9 +50,7 @@ object FunctionalAssignment {
     * @param numbers
     * @return
     */
-  def sum(numbers: Seq[Int]): Int = {
-    op(numbers, 0)(_+_)
-  }
+  def sum(numbers: Seq[Int]): Int = ???
 
 
   /**
@@ -73,11 +63,7 @@ object FunctionalAssignment {
     * @param i parameter for which the factorial must be calculated
     * @return i!
     */
-  def fact(i: Int): Int = {
-    if (i > 0)
-      i * fact(i-1)
-    else 1
-  }
+  def fact(i: Int): Int = ???
 
   /**
     * compute the n'th fibonacci number
@@ -87,13 +73,7 @@ object FunctionalAssignment {
     *
     * https://en.wikipedia.org/wiki/Fibonacci_number
     */
-  def fib(n: Int): Int = {
-    def fibRec(n: Int, a: Int, b: Int) : Int = {n match {
-      case 0 => b
-      case _ => fibRec(n - 1, a + b, a)
-    }}
-    fibRec(n, 1, 0)
-  }
+  def fib(n: Int): Int = ???
 
   /**
     * Implement a isSorted which checks whether an Array[A] is sorted according to a
@@ -102,13 +82,7 @@ object FunctionalAssignment {
     * Implementation hint: you always have to compare two consecutive elements of the array.
     * Elements which are equal are considered to be ordered.
     */
-  def isSorted[A](as: Array[A], gt: (A, A) => Boolean): Boolean = {
-    def sortRec(n: Int): Boolean =
-      if (n <= as.length - 1) true
-      else if (gt(as(n), as(n + 1))) false
-      else sortRec(n + 1)
-    sortRec(0)
-  }
+  def isSorted[A](as: Array[A], gt: (A, A) => Boolean): Boolean = ???
 
   /**
     * Takes both lists and combines them, element per element.
@@ -116,9 +90,7 @@ object FunctionalAssignment {
     * If one sequence is shorter than the other one, the function stops at the last element
     * of the shorter sequence.
     */
-  def genPairs[A, B](as: Seq[A], bs: Seq[B]): Seq[(A, B)] = {
-    for (a <- as ; b <- bs if as.indexOf(a) == bs.indexOf(b)) yield (a,b)
-  }
+  def genPairs[A, B](as: Seq[A], bs: Seq[B]): Seq[(A, B)] = ???
 
   // a simple definition of a linked list, we define our own list data structure
   sealed trait MyList[+A]
@@ -131,18 +103,13 @@ object FunctionalAssignment {
   // it also provides a convenience constructor in order to instantiate a MyList without hassle
   object MyList {
 
-    def sum[Int](list: MyList[Int]): Int = list match {
-      case MyNil => 0
-      case Cons(h,t) => h + sum(t)
-    }
+    def sum(list: MyList[Int]): Int = ???
 
-    def product[Int](list: MyList[Int]): Int = ???
+    def product(list: MyList[Int]): Int = ???
 
     def apply[A](as: A*): MyList[A] = {
-      as match {
-        case Nil => MyNil
-        case h :: tl => Cons(h, apply(tl: _*))
-      }
+      if (as.isEmpty) MyNil
+      else Cons(as.head, apply(as.tail: _*))
     }
 
   }
