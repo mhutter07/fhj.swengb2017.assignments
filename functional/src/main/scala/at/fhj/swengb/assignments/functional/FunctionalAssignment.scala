@@ -42,14 +42,24 @@ object FunctionalAssignment {
   //
   /**
     *
-    * @param as
-    * @param b
-    * @param fn
-    * @tparam A
-    * @tparam B
-    * @return
+  //  * @param as -> the parameter as is a Sequence that contains certain values, in this case integers
+  // * @param b -> the parameter b is the so-called accumulator, which accumulates the values from as and applies the function to them
+  //  * @param fn -> fn is the function that is applied to as, in this case foldLeft
+  //  * @tparam A -> the first parameter given to op
+  //  * @tparam B -> the second parameter given to op
+  //  * @return -> returns the result
+    *
+    * Renaming:
+    * as -> list
+    * b -> acc
+    * fn -> func
+    * A -> param1
+    * B -> param2
+    *
+    * By renaming the parameters it becomes more obvious what each and every parameter is actually doing.
+    * However, a disadvantage is that the function op is now about twice as long as it was before, making it more clumsy to write down
     */
-  def op[A, B](as: Seq[A], b: B)(fn: (B, A) => B): B = as.foldLeft(b)(fn)
+  def op[param1, param2](list: Seq[param1], acc: param2)(func: (param2, param1) => param2): param2 = list.foldLeft(acc)(func)
 
   /**
     * implement the summation of the given numbers parameter.
