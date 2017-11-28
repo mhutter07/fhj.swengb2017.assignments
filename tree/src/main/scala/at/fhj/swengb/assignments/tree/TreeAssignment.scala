@@ -67,9 +67,13 @@ object Graph {
               treeDepth: Int,
               factor: Double = 0.75,
               angle: Double = 45.0,
-              colorMap: Map[Int, Color] = Graph.colorMap): Tree[L2D] = ???
+              colorMap: Map[Int, Color] = Graph.colorMap): Tree[L2D] = {
 
-}
+    require(treeDepth <= 16, message = "depth is too high")
+    Node(L2D(start, initialAngle, length, colorMap(0)))
+}}
+
+
 
 
 object L2D {
