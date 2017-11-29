@@ -44,7 +44,6 @@ object Graph {
       case Node(x) => list.seq :+ x
       case Branch(left, right) => travRec(left, travRec(right, list))
     }
-
     travRec(tree, List()).reverse.map(convert)
   }
 
@@ -68,11 +67,34 @@ object Graph {
               factor: Double = 0.75,
               angle: Double = 45.0,
               colorMap: Map[Int, Color] = Graph.colorMap): Tree[L2D] = {
+                require(treeDepth <= 16, message = "depth is too high")
+                Node(L2D(start, initialAngle, length, colorMap(0)))
 
-    require(treeDepth <= 16, message = "depth is too high")
-    Node(L2D(start, initialAngle, length, colorMap(0)))
-}}
+  def expandTree(root: Node[L2D], factor: Double, angle: Double, color: Color) : Branch[L2D] = {
+    val leftNode = Node(root.value.left(factor, angle, color))
+    val rightNode = Node(root.value.right(factor, angle, color))
 
+    Branch(root, Branch(leftNode, rightNode))
+  }
+
+  def createTree(tree: Tree[L2D], depth: Int, end : Int) : Tree[L2D] = {
+    if (depth == end) tree
+    else {
+      def nextLevel(tree: Tree[L2D], level: Int) : Branch[L2D] = tree match {
+        case Node(root) => expandTree(Node(root), factor, angle, colorMap(level))
+        case Branch(Node(root), Branch(Node(left), Node(right))) =>
+          Branch(Node(root), Branch(expandTree(Node(left), factor, angle, colorMap(level)), expandTree(Node(right), factor, angle, colorMap(level))))
+        case Branch(Node(root), Branch(left, right)) =>
+          Branch(Node(root), Branch(nextLevel(left, depth + 1), nextLevel(right, depth + 1)))
+      }
+        createTree(nextLevel(tree, depth), depth + 1, end)
+      }}
+
+  val node : Tree[L2D] = Node(L2D(start, initialAngle, length, colorMap(0)))
+  treeDepth match {
+    case 0 => node
+    case _ => createTree(node, 0, treeDepth)
+}}}
 
 
 
