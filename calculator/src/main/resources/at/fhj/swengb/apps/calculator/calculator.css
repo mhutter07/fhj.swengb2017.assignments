@@ -22,6 +22,24 @@
 
 }
 
-#calculator .gridpane {
-    -fx-background-color: #f95007;
+#calculator .orange1 {
+    -fx-background-color: #f95007,
+        linear-gradient(#df800a, #df800a),
+        linear-gradient(#f4c501 12%, #f49801 32%, #df9a0f 35%, #df800a 30%);
+    -fx-font-size: 20px;
+    -fx-text-fill: black;
+}
+
+#calculator .orange2 {
+    -fx-background-color: #f95007,
+        linear-gradient(#df800a, #df800a),
+        linear-gradient(#df800a 68%, #df9a0f 32%, #f49801 75%,#f4c501 90%);
+    -fx-font-size: 20px;
+    -fx-text-fill: black;
+}
+
+#calculator .orange3 {
+    -fx-background-color: #df800a;
+    -fx-font-size: 20px;
+    -fx-text-fill: black;
 }

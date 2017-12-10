@@ -12,5 +12,25 @@
 | needed: 2.5 h
 | Creating buttons
 
+| 05.12.2017
+| estimated: 2 h
+| needed: 3 h
+| Working on CSS and fixing buttons
+
+| 08.12.2017
+| estimated: 1 h
+| needed : 1h
+| Improving buttons and CSS
+
+| 09.12.2017
+| estimated 4 h
+| needed 5 h
+| Trying to pass all tests
+
+| 10.12.2017
+| estimated 2 h
+| needed 1.5 h
+| All tests passed
+
 
 |===
