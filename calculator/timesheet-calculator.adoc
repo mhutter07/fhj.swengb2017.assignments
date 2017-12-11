@@ -32,5 +32,11 @@
 | needed 1.5 h
 | All tests passed
 
+| 10.12.2017
+| estimated 7 h
+| needed ?
+| actually done: 7.25 h
+| commentary: I give up!!!
+| Implementation of CalculatorAPP
 
 |===
