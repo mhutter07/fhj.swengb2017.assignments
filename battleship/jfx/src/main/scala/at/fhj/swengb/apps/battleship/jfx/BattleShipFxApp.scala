@@ -4,7 +4,6 @@ import javafx.application.Application
 import javafx.fxml.FXMLLoader
 import javafx.scene.{Parent, Scene}
 import javafx.stage.Stage
-
 import scala.util.{Failure, Success, Try}
 
 object BattleShipFxApp {
@@ -28,5 +27,4 @@ class BattleShipFxApp extends Application {
       case Failure(e) => e.printStackTrace()
     }
   }
-
 }

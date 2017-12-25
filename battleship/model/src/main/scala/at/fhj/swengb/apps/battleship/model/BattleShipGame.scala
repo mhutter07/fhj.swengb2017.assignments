@@ -32,7 +32,8 @@ case class BattleShipGame(battleField: BattleField,
       getCellHeight(y),
       log,
       battleField.fleet.findByPos(pos),
-      updateGameState)
+      updateGameState,
+      updateClicks)
   }
 
   def getCells(): Seq[BattleFxCell] = cells
@@ -40,7 +41,7 @@ case class BattleShipGame(battleField: BattleField,
   var clicks : List[BattlePos] = List()
 
   def updateClicks(pos : BattlePos) = {
-    clicks = clicks :+ pos
+    clicks = pos :: clicks
   }
 
   def updateGameState(vessel: Vessel, pos: BattlePos): Unit = {

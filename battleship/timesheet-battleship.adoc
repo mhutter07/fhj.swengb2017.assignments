@@ -29,5 +29,10 @@ Team : Hurray (hutterma14, schmitze16)
 | 1
 | Additional work on BattleShipGame; work on ProtocolSpec
 
+| Hutter, Schmitzer
+| 25.12.17
+| 5
+|
+| Saving and Loading games
 
 |===
