@@ -1,5 +1,7 @@
 == Time expenditure: battleship assignment
 
+Team : Hurray (hutterma14, schmitze16)
+
 [cols="1,1,1, 1,4", options="header"]
 .Time expenditure
 |===
@@ -9,22 +11,23 @@
 | Actual Hours
 | Description
 
-| Arneitzj15
-| 29.11.17
-| 2
+| Hutter
+| 22.12.17
+| 1.5
 | 1
-| Review of this and that
+| Protobuf Messages
 
-| Arneitzj15
-| 30.11.17
-| 1
+| Hutter, Schmitzer
+| 24.12.17
+| 3
 | 5
-| implemented css
+| working on BattleShipProtocol and BattleShipGame
 
-| Heiderst16
-| 11.07.17
+| Hutter, Schmitzer
+| 25.12.17
 | 2
-| 2
-| fixed bugs
+| 1
+| Additional work on BattleShipGame; work on ProtocolSpec
+
 
 |===

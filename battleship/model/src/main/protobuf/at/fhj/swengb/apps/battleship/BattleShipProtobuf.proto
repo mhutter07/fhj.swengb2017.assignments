@@ -7,7 +7,29 @@ option java_outer_classname = "BattleShipProtobuf";
 
 
 message BattleShipGame {
-
-    // TODO
-
+    BattleField battlefield = 1;
+    repeated Position click = 4;
 }
+
+message Position {
+    int32 CoordX = 1;
+    int32 CoordY = 2;
+}
+
+message BattleField {
+    int32 width = 1;
+    int32 height = 2;
+    Fleet fleet = 3;
+}
+
+message Fleet {
+    repeated Vessels vessel = 1;
+}
+
+message Vessels {
+    string name = 1;
+    Position startPos = 2;
+    string direction = 3;
+    int32 size = 4;
+}
+
