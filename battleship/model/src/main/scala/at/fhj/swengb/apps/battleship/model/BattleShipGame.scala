@@ -23,6 +23,7 @@ case class BattleShipGame(battleField: BattleField,
   /**
     * We don't ever change cells, they should be initialized only once.
     */
+  var clicks : List[BattlePos] = List()
 
   private val cells: Seq[BattleFxCell] = for {x <- 0 until battleField.width
                                               y <- 0 until battleField.height
@@ -38,10 +39,9 @@ case class BattleShipGame(battleField: BattleField,
 
   def getCells(): Seq[BattleFxCell] = cells
 
-  var clicks : List[BattlePos] = List()
 
-  def updateClicks(pos : BattlePos) = {
-    clicks = pos :: clicks
+  def updateClicks(pos : BattlePos) : Unit = {
+    clicks = clicks :+ pos
   }
 
   def updateGameState(vessel: Vessel, pos: BattlePos): Unit = {

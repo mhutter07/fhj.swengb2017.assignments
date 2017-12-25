@@ -2,7 +2,8 @@ package at.fhj.swengb.apps.battleship
 
 import at.fhj.swengb.apps.battleship.model._
 import scala.collection.JavaConverters._
-
+import java.lang
+import java.util
 
 object BattleShipProtocol {
 
@@ -23,8 +24,8 @@ object BattleShipProtocol {
 
   def convert(g: BattleShipProtobuf.Vessels) : Vessel = {
     val dir = g.getDirection match {
-        case "horizontal" => Horizontal
-        case "vertical" => Vertical
+        case "h" => Horizontal
+        case "v" => Vertical
       }
     Vessel(NonEmptyString(g.getName), convert(g.getStartPos), dir, g.getSize)
   }
@@ -32,8 +33,8 @@ object BattleShipProtocol {
   def convert(g: Vessel) : BattleShipProtobuf.Vessels = {
     BattleShipProtobuf.Vessels.newBuilder().setName(g.name.value).setStartPos(convert(g.startPos))
       .setSize(g.size).setDirection(g.direction match {
-        case Vertical => "vertical"
-        case Horizontal => "horizontal"
+      case Horizontal => "h"
+      case Vertical => "v"
       }).build()
   }
 

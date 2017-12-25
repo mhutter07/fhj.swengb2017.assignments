@@ -6,7 +6,7 @@ import javafx.fxml.{FXML, Initializable}
 import javafx.scene.control.{Slider, TextArea}
 import javafx.scene.layout.GridPane
 import java.nio.file.{Files, Paths}
-import javax.swing.JFileChooser
+import javax.swing.{JFileChooser, JFrame}
 
 import at.fhj.swengb.apps.battleship.model._
 import at.fhj.swengb.apps.battleship.{BattleShipProtobuf, BattleShipProtocol}
@@ -24,31 +24,35 @@ class BattleShipFxController extends Initializable {
     */
   @FXML private var log: TextArea = _
 
-  var currentGame : BattleShipGame = _
+  @FXML private var currentGame : BattleShipGame = _
 
   @FXML def newGame(): Unit = initGame()
 
-  @FXML def saving() : Unit = {
+  @FXML def savingGame() : Unit = {
+    val saveFrame = new JFrame()
     val saveJFileChooser = new JFileChooser
     saveJFileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY)
-    saveJFileChooser.setAcceptAllFileFilterUsed(false)
 
-    if (saveJFileChooser.showSaveDialog(null) == JFileChooser.APPROVE_OPTION) {
+    if (saveJFileChooser.showSaveDialog(saveFrame) == JFileChooser.APPROVE_OPTION) {
       val saveGame = BattleShipProtocol.convert(currentGame)
-      val savePath = saveJFileChooser.getSelectedFile.getAbsolutePath + "\\savegame.bin"
-      saveGame.writeTo(Files.newOutputStream(Paths.get(savePath)))
+      val saveFile = saveJFileChooser.getSelectedFile
+      saveGame.writeTo(Files.newOutputStream(Paths.get(saveFile.getAbsolutePath + "\\savegame.bin")))
     }
   }
 
-  @FXML def loading() : Unit = {
+  @FXML def loadingGame() : Unit = {
+    val loadFrame = new JFrame()
     val loadJFileChooser = new JFileChooser
     loadJFileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY)
-    loadJFileChooser.setAcceptAllFileFilterUsed(false)
 
-    if (loadJFileChooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
-      val loadPath = Paths.get(loadJFileChooser.getSelectedFile.getAbsolutePath)
-      val loadedGame : BattleShipProtobuf.BattleShipGame = BattleShipProtobuf.BattleShipGame.parseFrom(Files.newInputStream(loadPath))
-      init(BattleShipGame(convert(loadedGame).battleField, getCellWidth, getCellHeight, appendLog))
+    if (loadJFileChooser.showOpenDialog(loadFrame) == JFileChooser.APPROVE_OPTION) {
+      val loadFile = loadJFileChooser.getSelectedFile
+      val loadPath = loadFile.getAbsolutePath
+      val inputStream = Files.newInputStream(Paths.get(loadPath))
+      val loadGame : BattleShipProtobuf.BattleShipGame = BattleShipProtobuf.BattleShipGame.parseFrom(inputStream)
+      val resumeGame = BattleShipGame(convert(loadGame).battleField, getCellWidth, getCellHeight, appendLog)
+      resumeGame.clicks = convert(loadGame).clicks
+      init(resumeGame)
     }
   }
 
