@@ -26,6 +26,12 @@ case class BattleFxCell(pos: BattlePos
   }
 
   setOnMouseClicked(e => {
+    helperMouseClicks()
+  })
+
+  def helperMouseClicks() = {
+    if (!isDisable)
+      updateClicks(pos)
     someVessel match {
       case None =>
         log(s"Missed. Just hit water.")
@@ -35,6 +41,5 @@ case class BattleFxCell(pos: BattlePos
         fn(v, pos)
         setFill(Color.RED)
     }
-  })
-
+  }
 }

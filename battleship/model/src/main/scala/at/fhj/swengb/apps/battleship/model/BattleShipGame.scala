@@ -44,6 +44,12 @@ case class BattleShipGame(battleField: BattleField,
     clicks = clicks :+ pos
   }
 
+  def updateCells(i : Int) : Unit = {
+    clicks.take(i).foreach((pos) => {
+      cells(pos.x * battleField.width + pos.y).getOnMouseClicked().handle(null)
+    })
+  }
+
   def updateGameState(vessel: Vessel, pos: BattlePos): Unit = {
     log("Vessel " + vessel.name.value + " was hit at position " + pos)
 
@@ -87,6 +93,12 @@ case class BattleShipGame(battleField: BattleField,
       hits = hits.updated(vessel, Set(pos))
     }
 
+  }
+
+  def loadingClicks(pos : List[BattlePos]) : Unit = {
+    for (p <- pos) {
+      cells.filter(x => x.pos.equals(p)).head.helperMouseClicks()
+    }
   }
 
 

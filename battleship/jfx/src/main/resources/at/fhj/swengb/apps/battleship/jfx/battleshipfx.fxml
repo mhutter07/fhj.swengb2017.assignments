@@ -11,7 +11,8 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="540.0" prefWidth="752.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="at.fhj.swengb.apps.battleship.jfx.BattleShipFxController">
+<?import javafx.geometry.Insets?>
+<BorderPane prefHeight="540.0" prefWidth="752.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="at.fhj.swengb.apps.battleship.jfx.BattleShipFxController">
     <right>
 
 
@@ -26,10 +27,13 @@
     <right>
         <VBox prefHeight="392.0" prefWidth="138.0" BorderPane.alignment="CENTER">
             <children>
-                <Button id="button" fx:id="button" onAction="#newGame" prefHeight="27.0" prefWidth="142.0" text="New Game" />
-            <Button id="button" fx:id="button1" onAction="#loadingGame" prefHeight="27.0" prefWidth="142.0" text="Load Game" />
-            <Button id="button" fx:id="button11" onAction="#savingGame" prefHeight="27.0" prefWidth="142.0" text="Save Game" />
+                <Button id="button" fx:id="button" onAction="#newGame" prefHeight="45.0" prefWidth="140.0" text="New Game" />
+            <Button id="button" fx:id="button1" onAction="#loadingGame" prefHeight="45.0" prefWidth="140.0" text="Load Game" />
+            <Button id="button" fx:id="button11" onAction="#savingGame" prefHeight="45.0" prefWidth="140.0" text="Save Game" />
             </children>
+            <padding>
+                <Insets top="10" left="10" right="10" bottom="10" />
+            </padding>
         </VBox>
     </right>
     <center>
@@ -61,9 +65,9 @@
         </GridPane>
     </center>
    <left>
-        <TextArea fx:id="log" prefHeight="489.0" prefWidth="128.0" BorderPane.alignment="CENTER" />
+        <TextArea fx:id="log" prefHeight="420.0" prefWidth="175.0" BorderPane.alignment="CENTER" />
    </left>
    <bottom>
-      <Slider prefHeight="69.0" prefWidth="752.0" BorderPane.alignment="CENTER" />
+      <Slider fx:id="slider" prefHeight="69.0" prefWidth="752.0" BorderPane.alignment="CENTER" />
    </bottom>
 </BorderPane>
