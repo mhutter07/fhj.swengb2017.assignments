@@ -35,9 +35,9 @@ Team : Hurray (hutterma14, schmitze16)
 | 15
 | Saving and Loading games
 
-| Hutter, Schmitzer
+| Hutter
 | 25.12.17
-| 3
+| 6
 |
 | Implementing slider
 
