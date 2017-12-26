@@ -25,9 +25,7 @@ case class BattleFxCell(pos: BattlePos
     }
   }
 
-  setOnMouseClicked(e => {
-    helperMouseClicks()
-  })
+  setOnMouseClicked(e => {helperMouseClicks()})
 
   def helperMouseClicks() = {
     if (!isDisable)

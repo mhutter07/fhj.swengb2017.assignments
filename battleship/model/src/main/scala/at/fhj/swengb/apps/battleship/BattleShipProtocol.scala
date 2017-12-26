@@ -16,7 +16,7 @@ object BattleShipProtocol {
 
   def convert(g : BattleShipProtobuf.BattleShipGame) : BattleShipGame = {
     val battlefield : BattleField = BattleField(g.getBattlefield.getWidth, g.getBattlefield.getHeight, Fleet(g.getBattlefield.getFleet.getVesselList.asScala.map(convert).toSet))
-    val battleshipGame = BattleShipGame(battlefield, ((i : Int) => i.toDouble), ((i : Int) => i.toDouble), i => ())
+    val battleshipGame = BattleShipGame(battlefield, ((i : Int) => i.toDouble), ((i : Int) => i.toDouble), i => (), i => ())
     g.getClickList.asScala.map(convert).foreach(battleshipGame.updateClicks)
     battleshipGame
   }

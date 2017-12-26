@@ -18,11 +18,10 @@ class BattleShipFxController extends Initializable {
 
   @FXML private var battleGroundGridPane: GridPane = _
 
-
-
   /**
     * A text area box to place the history of the game
     */
+
   @FXML private var textLog: TextArea = _
 
   @FXML private var currentGame : BattleShipGame = _
@@ -52,9 +51,35 @@ class BattleShipFxController extends Initializable {
       val getSavedGame : BattleShipProtobuf.BattleShipGame = BattleShipProtobuf.BattleShipGame
         .parseFrom(Files.newInputStream(Paths.get(loadPath)))
       val loadGame : BattleShipGame = BattleShipProtocol.convert(getSavedGame)
-      val buildGame = BattleShipGame(loadGame.battleField, getCellWidth, getCellHeight, appendLog)
+      val buildGame = BattleShipGame(loadGame.battleField, getCellWidth, getCellHeight, appendLog, updateSlider)
       init(buildGame, loadGame.clicks)
     }
+  }
+
+  @FXML def updateSlider(slideClicks : Int) : Unit = {
+    slider.setMax(slideClicks)
+    slider.setValue(slideClicks)
+  }
+
+  @FXML def slideAlong() : Unit = {
+    val sliderPos : Int = slider.getValue.toInt
+    val sliderPosList = currentGame.clicks.reverse.take(sliderPos).reverse
+    var bool : Boolean = false
+
+    if (sliderPos == slider.getMax.toInt) {
+      bool = false
+      currentGame.clicks = List()
+    }
+    else {
+      bool = true
+    }
+    battleGroundGridPane.getChildren.clear()
+   for (cell <- currentGame.getCells()) {
+     battleGroundGridPane.add(cell, cell.pos.x, cell.pos.y)
+     cell.init()
+     cell.setDisable(bool)
+   }
+    currentGame.loadingClicks(sliderPosList)
   }
 
   override def initialize(url: URL, rb: ResourceBundle): Unit = initGame()
@@ -83,10 +108,10 @@ class BattleShipFxController extends Initializable {
 
     textLog.clear()
 
+    updateSlider(getClicks.size)
     game.getCells().foreach(c => c.init)
     game.clicks = List()
     game.loadingClicks(getClicks)
-
   }
 
   private def initGame(): Unit = {
@@ -100,7 +125,7 @@ class BattleShipFxController extends Initializable {
 
     val battleField: BattleField = BattleField.placeRandomly(field)
 
-    BattleShipGame(battleField, getCellWidth, getCellHeight, appendLog)
+    BattleShipGame(battleField, getCellWidth, getCellHeight, appendLog, updateSlider)
   }
 
 

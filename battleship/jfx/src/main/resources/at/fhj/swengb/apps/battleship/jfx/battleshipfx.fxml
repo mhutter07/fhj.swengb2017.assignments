@@ -68,6 +68,6 @@
         <TextArea fx:id="textLog" prefHeight="420.0" prefWidth="175.0" BorderPane.alignment="CENTER" wrapText="true"/>
    </left>
    <bottom>
-      <Slider fx:id="slider" prefHeight="69.0" prefWidth="752.0" BorderPane.alignment="CENTER" />
+      <Slider fx:id="slider" onMouseClicked="#slideAlong" prefHeight="69.0" prefWidth="752.0" BorderPane.alignment="CENTER" />
    </bottom>
 </BorderPane>
