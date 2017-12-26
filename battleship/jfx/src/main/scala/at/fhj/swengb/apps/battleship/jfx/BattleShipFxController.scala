@@ -19,10 +19,11 @@ class BattleShipFxController extends Initializable {
   @FXML private var battleGroundGridPane: GridPane = _
 
 
+
   /**
     * A text area box to place the history of the game
     */
-  @FXML private var log: TextArea = _
+  @FXML private var textLog: TextArea = _
 
   @FXML private var currentGame : BattleShipGame = _
 
@@ -62,7 +63,7 @@ class BattleShipFxController extends Initializable {
 
   private def getCellWidth(x: Int): Double = battleGroundGridPane.getColumnConstraints.get(x).getPrefWidth
 
-  def appendLog(message: String): Unit = log.appendText(message + "\n")
+  def appendLog(message: String): Unit = textLog.appendText(message + "\n")
 
   /**
     * Create a new game.
@@ -79,6 +80,9 @@ class BattleShipFxController extends Initializable {
     for (c <- game.getCells) {
       battleGroundGridPane.add(c, c.pos.x, c.pos.y)
     }
+
+    textLog.clear()
+
     game.getCells().foreach(c => c.init)
     game.clicks = List()
     game.loadingClicks(getClicks)
