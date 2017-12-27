@@ -9,22 +9,22 @@ import scala.util.{Failure, Success, Try}
 object BattleShipFxApp {
 
   def main(args: Array[String]): Unit = {
-    Application.launch(classOf[BattleShipFxApp], args: _*)
+    Application.launch(classOf[BattleShipFxApp], args : _*)
   }
-
 }
-
 
 class BattleShipFxApp extends Application {
 
   val css = "/at/fhj/swengb/apps/battleship/jfx/battleshipfx.css"
-  val fxml = "/at/fhj/swengb/apps/battleship/jfx/battleshipfx.fxml"
-  val triedRoot = Try(FXMLLoader.load[Parent](getClass.getResource(fxml)))
+  val triedRoot = Try(FXMLLoader.load[Parent](getClass.getResource("/at/fhj/swengb/apps/battleship/jfx/battleshipfx.fxml")))
 
-  override def start(stage: Stage) = {
+  override def start(stage: Stage) : Unit = {
     triedRoot match {
       case Success(root) =>
         stage.setScene(new Scene(root))
+        stage.setTitle("BattleShip")
+        stage.getScene.getStylesheets.clear()
+        stage.getScene.getStylesheets.add(css)
         stage.show()
       case Failure(e) => e.printStackTrace()
     }

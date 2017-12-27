@@ -6,11 +6,12 @@ import javafx.fxml.{FXML, Initializable}
 import javafx.scene.control.{Slider, TextArea}
 import javafx.scene.layout.GridPane
 import java.nio.file.{Files, Paths}
-import javax.swing.{JFileChooser, JFrame}
+import javax.swing.JFileChooser
 
 import at.fhj.swengb.apps.battleship.model._
 import at.fhj.swengb.apps.battleship.{BattleShipProtobuf, BattleShipProtocol}
 import at.fhj.swengb.apps.battleship.BattleShipProtocol._
+
 
 class BattleShipFxController extends Initializable {
 
@@ -58,12 +59,17 @@ class BattleShipFxController extends Initializable {
 
   @FXML def updateSlider(slideClicks : Int) : Unit = {
     slider.setMax(slideClicks)
+    slider.setMin(0)
     slider.setValue(slideClicks)
+    slider.setMinorTickCount(0)
+    slider.setMajorTickUnit(1)
+    slider.setSnapToTicks(true)
+    slider.setShowTickMarks(true)
   }
 
   @FXML def slideAlong() : Unit = {
     val sliderPos : Int = slider.getValue.toInt
-    val sliderPosList = currentGame.clicks.reverse.take(sliderPos).reverse
+    val sliderPosList : List[BattlePos] = currentGame.clicks.takeRight(sliderPos)
     var bool : Boolean = false
 
     if (sliderPos == slider.getMax.toInt) {
@@ -74,10 +80,10 @@ class BattleShipFxController extends Initializable {
       bool = true
     }
     battleGroundGridPane.getChildren.clear()
-   for (cell <- currentGame.getCells()) {
-     battleGroundGridPane.add(cell, cell.pos.x, cell.pos.y)
-     cell.init()
-     cell.setDisable(bool)
+    currentGame.getCells().foreach{cell =>
+      battleGroundGridPane.add(cell, cell.pos.x, cell.pos.y)
+      cell.init()
+      cell.setDisable(bool)
    }
     currentGame.loadingClicks(sliderPosList)
   }
@@ -88,7 +94,7 @@ class BattleShipFxController extends Initializable {
 
   private def getCellWidth(x: Int): Double = battleGroundGridPane.getColumnConstraints.get(x).getPrefWidth
 
-  def appendLog(message: String): Unit = textLog.appendText(message + "\n")
+  def appendLog(message: String): Unit = textLog.appendText("\n" + message + "\n")
 
   /**
     * Create a new game.
@@ -102,7 +108,7 @@ class BattleShipFxController extends Initializable {
   def init(game : BattleShipGame, getClicks : List[BattlePos]) : Unit = {
     currentGame = game
     battleGroundGridPane.getChildren.clear()
-    for (c <- game.getCells) {
+    for (c <- game.getCells()) {
       battleGroundGridPane.add(c, c.pos.x, c.pos.y)
     }
 
@@ -127,6 +133,4 @@ class BattleShipFxController extends Initializable {
 
     BattleShipGame(battleField, getCellWidth, getCellHeight, appendLog, updateSlider)
   }
-
-
 }

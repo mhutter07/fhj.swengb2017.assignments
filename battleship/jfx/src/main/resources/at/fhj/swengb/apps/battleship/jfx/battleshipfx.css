@@ -1,0 +1,11 @@
+// see https://docs.oracle.com/javafx/2/api/javafx/scene/doc-files/cssref.html
+// see http://fxexperience.com/2011/12/styling-fx-buttons-with-css/
+
+#battleship .text {
+    -fx-background-color: #2F4F4F;
+    -fx-text-fill: #ee0000;
+}
+
+#battleship .button {
+    -fx-background-color: #43464B;
+}

@@ -27,9 +27,9 @@
     <right>
         <VBox prefHeight="392.0" prefWidth="138.0" BorderPane.alignment="CENTER">
             <children>
-                <Button id="button" fx:id="new" onAction="#newGame" prefHeight="45.0" prefWidth="140.0" text="New Game" />
-            <Button id="button" fx:id="load" onAction="#loadingGame" prefHeight="45.0" prefWidth="140.0" text="Load Game" />
-            <Button id="button" fx:id="save" onAction="#savingGame" prefHeight="45.0" prefWidth="140.0" text="Save Game" />
+                <Button id="button" fx:id="new" onAction="#newGame" styleClass="button" prefHeight="45.0" prefWidth="140.0" text="New Game" />
+            <Button id="button" fx:id="load" onAction="#loadingGame" styleClass="button" prefHeight="45.0" prefWidth="140.0" text="Load Game" />
+            <Button id="button" fx:id="save" onAction="#savingGame" styleClass="button" prefHeight="45.0" prefWidth="140.0" text="Save Game" />
             </children>
             <padding>
                 <Insets bottom="10" left="10" right="10" top="10" />
@@ -65,7 +65,7 @@
         </GridPane>
     </center>
    <left>
-        <TextArea fx:id="textLog" prefHeight="420.0" prefWidth="175.0" BorderPane.alignment="CENTER" wrapText="true"/>
+        <TextArea fx:id="textLog" styleClass="text" prefHeight="420.0" prefWidth="175.0" BorderPane.alignment="CENTER" wrapText="true"/>
    </left>
    <bottom>
       <Slider fx:id="slider" onMouseClicked="#slideAlong" prefHeight="69.0" prefWidth="752.0" BorderPane.alignment="CENTER" />

@@ -27,7 +27,7 @@ Team : Hurray (hutterma14, schmitze16)
 | 25.12.17
 | 2
 | 1
-| Additional work on BattleShipGame; work on ProtocolSpec
+| work on ProtocolSpec
 
 | Hutter, Schmitzer
 | 25.12.17
@@ -36,9 +36,15 @@ Team : Hurray (hutterma14, schmitze16)
 | Saving and Loading games
 
 | Hutter
-| 25.12.17
+| 27.12.17
 | 6
-|
+| 6
 | Implementing slider
+
+|
+|
+|
+|
+| work on fxml and css
 
 |===
