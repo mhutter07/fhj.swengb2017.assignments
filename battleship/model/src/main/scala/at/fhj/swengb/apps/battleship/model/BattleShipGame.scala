@@ -83,7 +83,7 @@ case class BattleShipGame(battleField: BattleField,
         sunkShips = sunkShips + vessel
 
         if (battleField.fleet.vessels == sunkShips) {
-          log("G A M E   totally  O V E R")
+          log("G A M E   O V E R")
         }
       }
 

@@ -41,10 +41,10 @@ Team : Hurray (hutterma14, schmitze16)
 | 6
 | Implementing slider
 
-|
-|
-|
-|
-| work on fxml and css
+| Hutter, Schmiter
+| 29.12.17
+| 3
+| 3
+| fxml and css
 
 |===

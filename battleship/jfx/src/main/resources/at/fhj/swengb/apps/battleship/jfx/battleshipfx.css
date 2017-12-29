@@ -1,11 +1,52 @@
 // see https://docs.oracle.com/javafx/2/api/javafx/scene/doc-files/cssref.html
 // see http://fxexperience.com/2011/12/styling-fx-buttons-with-css/
 
-#battleship .text {
-    -fx-background-color: #2F4F4F;
-    -fx-text-fill: #ee0000;
+#battleship {
+    -fx-background-color: #00ff00;
 }
 
-#battleship .button {
+.background {
+    -fx-background-image: url("metallic.jpg");
+}
+
+.header {
+    -fx-background-color: transparent;
+    -fx-text-fill: #313233;
+    -fx-text-size: 45px;
+    -fx-font-weight: bold;
+    -fx-font-family: "Stencil";
+    -fx-effect: dropshadow(gaussian, rgba(255,255,255,0.5), 0,0,0,1);
+}
+
+.gridpane {
+    -fx-background-image: url("sea.jpg")
+}
+
+
+.text {
     -fx-background-color: #43464B;
+    -fx-border-color: #1b1d20;
+    -fx-text-fill: #efeffb;
+}
+
+.text .scroll-pane .content {
+    -fx-background-image: url("stormy.jpg");
+}
+
+
+.button {
+    -fx-background-color: #535658,
+           linear-gradient(#37383a 0%, #494c51 33%, #53565c 66%, #63666d 100%);
+    -fx-border-color: #1b1d20;
+    -fx-text-fill: #efeffb;
+    -fx-effect: dropshadow(gaussian, rgba(5,5,5,5), 0,0,1,1);
+    -fx-font-family: "Stencil";
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+}
+
+.button:hover {
+    -fx-background-color: #717376,
+         linear-gradient(#525356 0%, #767b83 33%, #868990 66%, #cccccc 100%);
+    -fx-text-fill: #f6e009;
 }

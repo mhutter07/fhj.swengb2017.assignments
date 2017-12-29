@@ -35,8 +35,11 @@ object Fleet {
   }
 
   val Default: Fleet = {
-    val battleships: Set[Vessel] = Set(new BattleShip("Archduke John", BattlePos(0, 0), Vertical))
-    val cruisers: Set[Vessel] = Set(new Cruiser("Cruz", BattlePos(1, 0), Vertical), new Cruiser("Santa", BattlePos(2, 0), Vertical))
+    val battleships: Set[Vessel] = Set(
+      new BattleShip("Archduke John", BattlePos(0, 0), Vertical))
+    val cruisers: Set[Vessel] = Set(
+      new Cruiser("Cruz", BattlePos(1, 0), Vertical),
+      new Cruiser("Santa", BattlePos(2, 0), Vertical))
     val destroyers: Set[Vessel] = Set(
       new Destroyer("Graz", BattlePos(5, 5), Horizontal),
       new Destroyer("Wien", BattlePos(0, 6), Horizontal),

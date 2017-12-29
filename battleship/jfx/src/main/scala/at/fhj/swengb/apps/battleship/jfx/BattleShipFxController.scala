@@ -65,6 +65,7 @@ class BattleShipFxController extends Initializable {
     slider.setMajorTickUnit(1)
     slider.setSnapToTicks(true)
     slider.setShowTickMarks(true)
+    slider.setShowTickLabels(true)
   }
 
   @FXML def slideAlong() : Unit = {
