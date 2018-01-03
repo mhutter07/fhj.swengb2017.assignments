@@ -12,8 +12,6 @@ import java.io.File
 import at.fhj.swengb.apps.battleship.model._
 import at.fhj.swengb.apps.battleship.{BattleShipProtobuf, BattleShipProtocol}
 
-
-
 class BattleShipFxController extends Initializable {
 
   @FXML private var battleGroundGridPane: GridPane = _

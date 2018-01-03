@@ -11,6 +11,7 @@ object BattleShipFxApp {
   def main(args: Array[String]): Unit = {
     Application.launch(classOf[BattleShipFxApp], args : _*)
   }
+
   var game : Stage = _
 }
 
