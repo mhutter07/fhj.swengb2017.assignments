@@ -27,7 +27,7 @@ case class BattleFxCell(pos: BattlePos
 
   setOnMouseClicked(e => {helperMouseClicks()})
 
-  def helperMouseClicks() = {
+  def helperMouseClicks() : Unit = {
     if (!isDisable)
       updateClicks(pos)
     someVessel match {

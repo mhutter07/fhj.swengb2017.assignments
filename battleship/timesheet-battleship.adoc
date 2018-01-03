@@ -47,4 +47,10 @@ Team : Hurray (hutterma14, schmitze16)
 | 3
 | fxml and css
 
+| Hutter
+| 03.01.18
+| 2
+| 1
+| importing and implementing "javafx.stage.FileChooser"
+
 |===
